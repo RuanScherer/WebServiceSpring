@@ -1,9 +1,12 @@
 package com.ruanscherer.course.services;
 
 import com.ruanscherer.course.entities.User;
+import com.ruanscherer.course.exceptions.DatabaseException;
 import com.ruanscherer.course.exceptions.ResourceNotFoundException;
 import com.ruanscherer.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,7 +32,13 @@ public class UserService {
     }
 
     public void delete(final Long id) {
-        userRepository.deleteById(id);
+        try {
+            userRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException exception) {
+            throw new ResourceNotFoundException(id);
+        } catch (DataIntegrityViolationException exception) {
+            throw new DatabaseException(exception.getMessage());
+        }
     }
 
     public User update(final Long id, final User user) {
