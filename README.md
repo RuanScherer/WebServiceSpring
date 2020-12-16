@@ -21,7 +21,7 @@ Study purpose project by Java course.
 
 #### Via terminal
 - Open your terminal and browse to the directory you choose.
-- Run `$ git clone https://github.com/RuanScherer/next-tailwind-framermotion.git` to clone the repository (needs GIT).
+- Run `$ git clone https://github.com/RuanScherer/WebServiceSpring.git` to clone the repository (needs GIT).
 - Run the project in your Java IDE.
 
 I'm at [LinkedIn](https://www.linkedin.com/in/ruan-scherer/), connect with me! :rocket:
